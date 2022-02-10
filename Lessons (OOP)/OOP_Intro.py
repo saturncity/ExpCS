@@ -42,7 +42,7 @@ restaurant3 = Restaurant("Wendys", "euro peen")
 restaurant2.describe_restaurant()
 restaurant3.describe_restaurant()
 
-class Users:
+class User:
     def __init__(self, first_name, last_name, age):
         self.first_name = first_name
         self.last_name = last_name
@@ -54,8 +54,8 @@ class Users:
     def greet_user(self):
         print(f"Hello, {self.first_name}! welcome to the place")
 
-user1 = Users("Jason", "Lenz", 15)
-user2 = Users("Jim", "Bob", 42)
+user1 = User("Jason", "Lenz", 15)
+user2 = User("Jim", "Bob", 42)
 
 user1.describe_user()
 user1.greet_user()
