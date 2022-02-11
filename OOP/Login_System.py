@@ -2,13 +2,13 @@ import json
 import ast
 from User_Model import User
 
-current_users = []
+# current_users = []
 users = []
-admin = {'username': 'admin', 'password': 'guess_me'}  # add password hint and user type
+# admin = {'username': 'admin', 'password': 'guess_me'}  # add password hint and user type
                                                     # i.e. 'hint': 'Who should I guess?', 'account type': 'admin'
 myAdmin = User('admin', 'guess_me')
 
-current_users.append(admin)
+# current_users.append(admin)
 users.append(myAdmin)
 
 # current_users = [admin]
@@ -27,15 +27,15 @@ def read_file(file_name):
         current_users = new_list
         print("File input done.")
 
-
+# checked and no need to change
 def registration():
     username = input("Enter a new username: ").lower().strip()
     # **** implement a searching and checking whether or not the username is already exist ****
+    #
     pass_verification = False
     while not pass_verification:
         password = input("Enter a password: ")
         count = 0
-        # counting how many char in the password string for its length
         for char in password:
             count = count + 1
 
@@ -56,12 +56,12 @@ def registration():
 #     write_to_file('accounts.txt')
 #     print(f"{username.title()} has been added.")
 
-# changed to using Object
-def create_user(username, password):
-    new_user = User(username, password)
+# updated
+def create_user(new_username, new_password):
+    new_user = User(new_username, new_password)
     users.append(new_user)
     write_to_file('accounts.txt')   # need to update this later
-    print(f"{username.title()} has been added.")
+    print(f"{new_username.title()} has been added.")
 
 
 # def authentication(user_index):
@@ -83,15 +83,14 @@ def create_user(username, password):
 #
 #     return correct_pass
 
-# changed to using Object
 def authentication(user_index):
     correct_pass = False
     count = 0
     while not correct_pass and count < 3:
         user_password = input("Enter your password: ")
         user = users[user_index]
-        if user.get_password() == user_password:
-            print(f"Welcome, {user.get_username().title()}")
+        if user['password'] == user_password:
+            print(f"Welcome, {user['username'].title()}")
             correct_pass = True
         else:
             count = count + 1
