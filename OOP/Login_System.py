@@ -14,17 +14,41 @@ users.append(myAdmin)
 # current_users = [admin]
 
 
+# def write_to_file(file_name):
+#     with open(file_name, 'w') as file_out:
+#         json.dump(current_users, file_out)
+#         print("File output done.")
+
 def write_to_file(file_name):
     with open(file_name, 'w') as file_out:
-        json.dump(current_users, file_out)
+        for user in users:
+            user_account = user.get_username() + ',' + \
+                           user.get_password() + ',' + \
+                           user.get_email() + ',' + \
+                           str(user.is_admin()) + '\n'
+            file_out.write(user_account)
         print("File output done.")
 
 
+# def read_file(file_name):
+#     with open(file_name, 'r') as file_in:
+#         new_list = ast.literal_eval(file_in.read())
+#         global current_users
+#         current_users = new_list
+#         print("File input done.")
+
 def read_file(file_name):
     with open(file_name, 'r') as file_in:
-        new_list = ast.literal_eval(file_in.read())
-        global current_users
-        current_users = new_list
+
+        # new_list = file_in.readline().split(',')
+        # new_user = User(new_list[0], new_list[1])
+        lines = file_in.readlines()
+        for line in lines:
+            new_list = line.split(',')
+            new_user = User(new_list[0], new_list[1])
+            global users
+            users.append(new_user)
+
         print("File input done.")
 
 # checked and no need to change
@@ -83,14 +107,15 @@ def create_user(new_username, new_password):
 #
 #     return correct_pass
 
+# updated
 def authentication(user_index):
     correct_pass = False
     count = 0
     while not correct_pass and count < 3:
         user_password = input("Enter your password: ")
         user = users[user_index]
-        if user['password'] == user_password:
-            print(f"Welcome, {user['username'].title()}")
+        if user.get_password() == user_password:
+            print(f"Welcome, {user.get_username().title()}")
             correct_pass = True
         else:
             count = count + 1
@@ -102,12 +127,12 @@ def authentication(user_index):
 
     return correct_pass
 
-
+# updated
 def search_user(username):
     index = -1
     i = 0
-    for user in current_users:
-        if user['username'].lower() == username.lower():
+    for user in users:
+        if str(user.get_username()).lower() == username.lower():
             index = i
             break
 
