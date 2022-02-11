@@ -18,7 +18,6 @@
 # dog2 = Dog("Jimmy", 3)
 # dog2.getName()
 # dog2.bark()
-#
 
 class Restaurant:
     def __init__(self, restaurant_name, cuisine_type):
