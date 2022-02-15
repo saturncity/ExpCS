@@ -6,10 +6,10 @@ from User_Model import User
 users = []
 # admin = {'username': 'admin', 'password': 'guess_me'}  # add password hint and user type
                                                     # i.e. 'hint': 'Who should I guess?', 'account type': 'admin'
-myAdmin = User('admin', 'guess_me')
+# myAdmin = User('admin', 'guess_me')
 
 # current_users.append(admin)
-users.append(myAdmin)
+# users.append(myAdmin)
 
 # current_users = [admin]
 
@@ -25,7 +25,7 @@ def write_to_file(file_name):
             user_account = user.get_username() + ',' + \
                            user.get_password() + ',' + \
                            user.get_email() + ',' + \
-                           str(user.is_admin()) + '\n'
+                           str(user.is_admin()) + ',' + '\n'
             file_out.write(user_account)
         print("File output done.")
 
@@ -39,15 +39,16 @@ def write_to_file(file_name):
 
 def read_file(file_name):
     with open(file_name, 'r') as file_in:
-
         # new_list = file_in.readline().split(',')
         # new_user = User(new_list[0], new_list[1])
         lines = file_in.readlines()
         for line in lines:
-            new_list = line.split(',')
-            new_user = User(new_list[0], new_list[1])
-            global users
-            users.append(new_user)
+            if line != '\n':
+                new_list = line.split(',')
+                # print(new_list)
+                new_user = User(new_list[0], new_list[1], new_list[2], new_list[3])
+                global users
+                users.append(new_user)
 
         print("File input done.")
 
@@ -56,6 +57,7 @@ def registration():
     username = input("Enter a new username: ").lower().strip()
     # **** implement a searching and checking whether or not the username is already exist ****
     #
+    email = input("Enter an email address: ").lower().strip()
     pass_verification = False
     while not pass_verification:
         password = input("Enter a password: ")
@@ -66,7 +68,7 @@ def registration():
         if count >= 10:
             confirm_password = input("Reenter the password: ")
             if password == confirm_password:
-                create_user(username, password)
+                create_user(username, password, email)  # still haven't implement the isAdmin yet
                 pass_verification = True
             else:
                 print("Verification Failed. Please enter the same password twice")
@@ -81,8 +83,8 @@ def registration():
 #     print(f"{username.title()} has been added.")
 
 # updated
-def create_user(new_username, new_password):
-    new_user = User(new_username, new_password)
+def create_user(new_username, new_password, email, isAdmin = False):
+    new_user = User(new_username, new_password, email, isAdmin)
     users.append(new_user)
     write_to_file('accounts.txt')   # need to update this later
     print(f"{new_username.title()} has been added.")
