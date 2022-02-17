@@ -1,7 +1,14 @@
-import random
+from tkinter import *
+class Window:
+    def __init__(self):
+        self.frame = Tk()
+        self.frame.geometry("920x420")
+        self.frame.title("The truth")
+        self.lbl_message = Label(text="Allen Sucks", bg="aquamarine1", fg="black")
+        self.lbl_message.pack()
 
-target = randint(0, 1000)
+    def run(self):
+        self.frame.mainloop()
 
-guess = ""
-while guess != str(target):
-    guess = input("guess a number")
+app = Window()
+app.run()
