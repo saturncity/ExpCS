@@ -42,14 +42,14 @@ class Window:
     def convert_to_celsius(self):
         """Converts number given (presumably a number in fahrenheit) to celsius using ((intake - 32) * (5 / 9))."""
         intake = int(self.text_input.get())
-        result = ((intake - 32) * (5 / 9))
-        self.label_result.config(text=(f"{result}°c"), bg="gold", fg="black")
+        result = round(((intake - 32) * (5 / 9)), 1)
+        self.label_result.config(text=f"{result}°c", bg="gold", fg="black")
 
     def convert_to_fahrenheit(self):
         """Converts number given (presumably a number in celsius) to fahrenheit using ((intake * (9 / 5)) + 32)."""
         intake = int(self.text_input.get())
-        result = ((intake * (9 / 5)) + 32)
-        self.label_result.config(text=(f"{result}°f"), bg="gold", fg="black")
+        result = round(((intake * (9 / 5)) + 32), 1)
+        self.label_result.config(text=f"{result}°f", bg="gold", fg="black")
 
 
 app = Window()
