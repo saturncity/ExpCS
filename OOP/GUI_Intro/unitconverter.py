@@ -41,15 +41,23 @@ class Window:
 
     def convert_to_celsius(self):
         """Converts number given (presumably a number in fahrenheit) to celsius using ((intake - 32) * (5 / 9))."""
-        intake = int(self.text_input.get())
-        result = round(((intake - 32) * (5 / 9)), 1)
-        self.label_result.config(text=f"{result}°c", bg="gold", fg="black")
+        try:
+            intake = float(self.text_input.get())
+            result = round(((intake - 32) * (5 / 9)), 1)
+            self.label_result.config(text=f"{result}°c", bg="gold", fg="black")
+        except:
+            print("ERROR: Failed to cast as int.")
+            self.label_result.config(text="ERROR", bg="red", fg="black")
 
     def convert_to_fahrenheit(self):
         """Converts number given (presumably a number in celsius) to fahrenheit using ((intake * (9 / 5)) + 32)."""
-        intake = int(self.text_input.get())
-        result = round(((intake * (9 / 5)) + 32), 1)
-        self.label_result.config(text=f"{result}°f", bg="gold", fg="black")
+        try:
+            intake = float(self.text_input.get())
+            result = round(((intake * (9 / 5)) + 32), 1)
+            self.label_result.config(text=f"{result}°f", bg="gold", fg="black")
+        except:
+            print("ERROR: Failed to cast as int.")
+            self.label_result.config(text="ERROR", bg="red", fg="black")
 
 
 app = Window()
