@@ -15,8 +15,8 @@ class Window:
         self.label_input = Label(text="Input your number to convert here (Celsius or Fahrenheit):")
         self.text_input = Entry()
 
-        self.button_celsius = Button(text="Convert Input to Celsius", command=self.convert_to_celsius)
-        self.button_fahrenheit = Button(text="Convert Input to Fahrenheit", command=self.convert_to_fahrenheit)
+        self.button_celsius = Button(text="Convert Input (Fahrenheit) to Celsius", command=self.convert_to_celsius)
+        self.button_fahrenheit = Button(text="Convert Input (Celsius) to Fahrenheit", command=self.convert_to_fahrenheit)
 
         self.label_result = Label(text="")
 
@@ -45,8 +45,7 @@ class Window:
             intake = float(self.text_input.get())
             result = round(((intake - 32) * (5 / 9)), 1)
             self.label_result.config(text=f"{result}°c", bg="gold", fg="black")
-        except:
-            print("ERROR: Failed to cast as int.")
+        except ValueError:
             self.label_result.config(text="ERROR", bg="red", fg="black")
 
     def convert_to_fahrenheit(self):
@@ -55,8 +54,7 @@ class Window:
             intake = float(self.text_input.get())
             result = round(((intake * (9 / 5)) + 32), 1)
             self.label_result.config(text=f"{result}°f", bg="gold", fg="black")
-        except:
-            print("ERROR: Failed to cast as int.")
+        except ValueError:
             self.label_result.config(text="ERROR", bg="red", fg="black")
 
 
