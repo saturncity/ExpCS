@@ -1,11 +1,11 @@
 class User:
-    def __init__(self, username, password):
+    def __init__(self, username, password, email, admin=False):
         """Upon initiation, declare the attributes using the given variables."""
         self.username = username
         self.password = password
-        self.email = ""
-        self.hint = ""
-        self.admin = False
+        self.email = email
+        # self.hint = hint
+        self.admin = admin
 
     def get_username(self):
         """Returns the username"""
