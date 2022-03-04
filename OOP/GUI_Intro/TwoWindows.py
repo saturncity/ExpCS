@@ -37,7 +37,11 @@ class Login:
         self.label_status = Label(self.current_window, text="Please Press Login Above")
         self.label_status.pack()
 
-        self.read_file("C:/Users/Jason Aaren Lenz/pycharmProjects/ExpCS/OOP/accounts.txt")
+        self.image = PhotoImage("/Users/lenzj/Desktop/python.png")
+        self.label_image = Label(self.current_window, image=self.image)
+        self.label_image.pack()
+
+        self.read_file("/Users/lenzj/Documents/PyCharm/ExpCS/OOP/accounts.txt")
 
     def open_converter(self):
         Converter(self.root)
@@ -108,8 +112,8 @@ class Converter:
         self.root = root
         self.root.withdraw()
         self.current_window = Toplevel()
-        self.current_window.title("Window 2")
-        self.current_window.geometry("1000x1000")
+        self.current_window.title("Converter")
+        self.current_window.geometry("960x420")
 
         self.label_title = Label(self.current_window, text="Welcome to Jason's Fahrenheit to Celsius Converter!", bg="aquamarine1",
                                  fg="black")
@@ -123,6 +127,7 @@ class Converter:
 
         self.button_logout = Button(self.current_window, text="Logout", command=self.open_login)
         self.button_exit = Button(self.current_window, text="Exit", command=exit)
+        self.button_meme = Button(self.current_window, text="Show me a MEME!", command=self.open_cat_meme)
         self.label_result = Label(self.current_window, text="")
 
         self.label_title.pack()
@@ -135,10 +140,15 @@ class Converter:
         self.line_skip()
         self.button_logout.pack()
         self.button_exit.pack()
+        self.button_meme.pack()
         self.label_result.pack()
 
     def open_login(self):
         Login(self.root)
+        self.current_window.destroy()
+
+    def open_cat_meme(self):
+        Cat(self.root)
         self.current_window.destroy()
 
     def line_skip(self):
@@ -164,6 +174,29 @@ class Converter:
         except ValueError:
             self.label_result.config(text="ERROR", bg="red", fg="black")
 
+class Cat:
+    def __init__(self, root):
+        global photo
+        self.root = root
+        self.root.withdraw()
+        self.current_window = Toplevel()
+        self.current_window.configure(bg="black")
+        self.current_window.title("Cat Memez")
+
+        photo = PhotoImage(image="/Users/lenzj/Desktop/python.png")
+
+        self.label_image = Label(self.current_window,
+                      text="bro, do you even code?",
+                      font=('Arial', 40, 'bold'),
+                      fg='#00FF00',
+                      bg='black',
+                      relief=RAISED,
+                      bd=10,
+                      padx=20,
+                      pady=20,
+                      image=photo,
+                      compound='bottom')
+        self.label_image.pack()
 
 root = Tk()
 app = Login(root)
