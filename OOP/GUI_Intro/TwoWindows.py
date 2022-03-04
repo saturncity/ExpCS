@@ -35,7 +35,7 @@ class Login:
         self.button_exit.pack()
 
         self.label_status = Label(self.current_window, text="Please Press Login Above")
-        self.label_status.pack()
+        self.label_status.pack() # t
 
         self.image = PhotoImage("/Users/lenzj/Desktop/python.png")
         self.label_image = Label(self.current_window, image=self.image)
