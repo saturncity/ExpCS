@@ -1,9 +1,9 @@
-#  do not grade this i was just testing cursor tracking
+# TODO: Implement cursor tracking everywhere and clicking to remove the need for buttons.
 
 from tkinter import *
 
 
-class TestWindow:
+class TestWindow:  # cursor tracking test
     def __init__(self, root):
         self.root = root
         self.root.withdraw()
@@ -20,6 +20,12 @@ class TestWindow:
         print(f"({event.x}, {event.y})")
         self.canvas.coords(self.create_img, event.x, event.y)
 
+# class TestWindow:
+#     def __init__(self, root):
+#             self.root = root
+#             self.root.withdraw()
+#             self.current_window = Toplevel()
+#             self.current_window.title("Test Window")
 
 root = Tk()
 app = TestWindow(root)

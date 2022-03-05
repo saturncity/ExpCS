@@ -87,7 +87,7 @@ class Login:
         return correct_pass
 
     def login_handle(self):
-        account_name = self.text_username.get() # TODO: changed txt.password to txt.username
+        account_name = self.text_username.get() #
         u_index = self.search_user(account_name)
         if u_index == -1:
             self.label_status.config(text="User doesn't exit. Please try again.", fg="red")
