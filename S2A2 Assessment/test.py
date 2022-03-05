@@ -24,18 +24,3 @@ class TestWindow:
 root = Tk()
 app = TestWindow(root)
 root.mainloop()
-
-# from tkinter import *
-#
-# def Mousecoords(event):
-#     pointxy = (event.x, event.y) # get the mouse position from event
-#     print(pointxy)
-#     canvas.coords(cimg, pointxy) # move the image to mouse postion
-#
-# root = Tk()
-# img = PhotoImage(file="C:/Users/Jason Aaren Lenz/pycharmProjects/ExpCS/OOP/GUI_Intro/python.png")
-# canvas = Canvas(width=1000, height=1000)
-# cimg = canvas.create_image(200, 100, image=img)
-# canvas.pack()
-# canvas.bind('<Motion>', Mousecoords) # track mouse movement
-# root.mainloop()

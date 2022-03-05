@@ -12,7 +12,7 @@ class MainWindow():
         self.current_window.geometry("414x896")
 
         #  create a canvas. a canvas is like a regular window, but you are able to over-lap any item.
-        self.canvas = Canvas(self.current_window, width=414, height=896)
+        self.canvas = Canvas(self.current_window, width=414, height=896)  # iphone 11 pro max resolution (/3)
         self.canvas.pack()
 
         #  put the file on the canvas in 0, 0 then anchor it to the north-west point of the image.
