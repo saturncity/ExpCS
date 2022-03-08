@@ -28,3 +28,6 @@ class App:
     def get_total_apps(self):
         """Returns the length (int) of all files within the assets/apps directory"""
         return len(self.applications)
+
+
+print("You are meant to start the application by launching the MainWindow.py file!")

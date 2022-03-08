@@ -10,8 +10,8 @@ class TestWindow:  # cursor tracking test
         self.current_window = Toplevel()
         self.current_window.title("Test Window")
 
-        self.img = PhotoImage(file="C:/Users/Jason Aaren Lenz/pycharmProjects/ExpCS/OOP/GUI_Intro/python.png")
-        self.canvas = Canvas(self.current_window, width=500, height=500)
+        self.img = PhotoImage(file="../OOP/GUI_Intro/python.png")
+        self.canvas = Canvas(self.current_window, width=1000, height=1000)
         self.create_img = self.canvas.create_image(200, 100, image=self.img)
         self.canvas.pack()
         self.canvas.bind('<Motion>', self.mouse_coords)

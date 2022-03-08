@@ -31,7 +31,7 @@ class MainWindow():
         self.image = PhotoImage(file="assets/background.png")
         self.canvas.create_image(0, 0, image=self.image, anchor="nw")
 
-        # TODO: Write something here.
+        # display the apps using the display_apps() function.
         self.applications = App()
         self.displayed_apps = []
         self.display_apps()
