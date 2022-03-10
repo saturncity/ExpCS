@@ -29,5 +29,3 @@ class App:
         """Returns the length (int) of all files within the assets/apps directory"""
         return len(self.applications)
 
-
-print("You are meant to start the application by launching the MainWindow.py file!")

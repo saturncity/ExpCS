@@ -4,7 +4,7 @@ from tkinter import *
 from Apps import App
 
 
-class MainWindow():
+class MainWindow:
     def __init__(self, root):
         """This is the primary "Main Hub" class. It creates a window, creates a canvas, displays a background, displays
         all app icons, adds buttons below icons to open an app. When an app is opened, the current window gets
@@ -28,33 +28,43 @@ class MainWindow():
         self.canvas.pack()
 
         #  put the image on the canvas in 0, 0 then anchor it to the north-west point of the image.
-        self.image = PhotoImage(file="assets/background.png")
-        self.canvas.create_image(0, 0, image=self.image, anchor="nw")
+        self.image_background = PhotoImage(file="assets/background.png")
+        self.canvas.create_image(0, 0, image=self.image_background, anchor="nw")
 
         # display the apps using the display_apps() function.
-        self.applications = App()
-        self.displayed_apps = []
-        self.display_apps()
+        # self.applications = App()
+        # self.displayed_apps = []
+        # self.display_apps()
 
-    def display_apps(self):
-        # TODO: Documentation.
-        self.total_apps_displayed = 0
-        while self.total_apps_displayed < self.applications.get_total_apps():
-            self.displayed_apps.append(PhotoImage(
-                file="assets/apps/" + self.applications.get_filename(self.total_apps_displayed)))
-            self.canvas.create_image(self.next_free_position(),  # coords of free pos using its respective function.
-                                     image=self.displayed_apps[self.total_apps_displayed],
-                                     anchor="nw")
+        self.button_lanuch = Button(self.canvas, text="open tictactoe", command=self.open_tictactoe)
+        self.button_lanuch.place(x=100, y=100)
 
-            # TODO: Place button for every app.
+        Snake = {"image": {"filename": "Snake.png", "posx": ""}}
+    #
+    # def display_apps(self):
+    #     # OLDTODO: Documentation.
+    #     self.total_apps_displayed = 0
+    #     while self.total_apps_displayed < self.applications.get_total_apps():
+    #         self.displayed_apps.append(PhotoImage(
+    #             file="assets/apps/" + self.applications.get_filename(self.total_apps_displayed)))
+    #         self.canvas.create_image(self.next_free_position(),  # coords of free pos using its respective function.
+    #                                  image=self.displayed_apps[self.total_apps_displayed],
+    #                                  anchor="nw")
+    #
+    #         # OLDTODO: Place button for every app.
+    #
+    #         self.total_apps_displayed = self.total_apps_displayed + 1
+    #
+    # def next_free_position(self):
+    #     # OLDTODO: Documentation.
+    #     next_x = (self.total_apps_displayed - ((math.ceil(len(self.displayed_apps) / 4) - 1) * 4)) * 98 + 15
+    #     next_y = (math.floor(self.total_apps_displayed / 4) * 122) + 15
+    #     return next_x, next_y
 
-            self.total_apps_displayed = self.total_apps_displayed + 1
-
-    def next_free_position(self):
-        # TODO: Documentation.
-        next_x = (self.total_apps_displayed - ((math.ceil(len(self.displayed_apps) / 4) - 1) * 4)) * 98 + 15
-        next_y = (math.floor(self.total_apps_displayed / 4) * 122) + 15
-        return next_x, next_y
+    def open_tictactoe(self):
+        from TicTacToe import TicTacToe
+        TicTacToe(self.root)
+        self.current_window.destroy()
 
 
 root = Tk()
