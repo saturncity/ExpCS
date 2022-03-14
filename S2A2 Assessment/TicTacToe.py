@@ -13,7 +13,7 @@ class TicTacToe:
         self.canvas = Canvas(self.current_window, width=500, height=524, borderwidth=0, highlightthickness=0)
         self.canvas.pack()
 
-        self.image_tictactoe_background = PhotoImage(file="assets/tictactoe_background.png")
+        self.image_tictactoe_background = PhotoImage(file="assets/tictactoe_background-alt.png")
 
         self.button_exit = Button(self.canvas, text="Exit", command=self.open_main_window)
         self.button_restart = Button(self.canvas, text="Start Over", command=self.start)
@@ -52,26 +52,27 @@ class TicTacToe:
         self.button_exit.place(x=4, y=4, height=16, width=244)
         self.button_restart.place(x=252, y=4, height=16, width=244)
 
-        counter = 0
+        self.counter = 0
         for tile in self.game_board:
             if tile["tile"] == "":
                 self.buttons.append(
                     Button(self.canvas, text="PLACE " + self.turn.upper(), command=lambda: self.change_tile(tile)))
-                self.buttons[counter].place(x=tile["pos_x"], y=tile["pos_y"], height=138, width=138, anchor=CENTER)
+                self.buttons[self.counter].place(x=tile["pos_x"], y=tile["pos_y"], height=138, width=138, anchor=CENTER)
 
-            counter = counter + 1
+            self.counter = self.counter + 1
 
 
         print(self.buttons)
 
     def change_tile(self, tile):
         """documentation"""
+        print(tile)
         tile["tile"] = self.turn
         if self.turn == "x":
             self.turn = "o"
         elif self.turn == "o":
             self.turn = "x"
-        self.show_buttons()
+        print(self.game_board)
 
 
 root = Tk()
