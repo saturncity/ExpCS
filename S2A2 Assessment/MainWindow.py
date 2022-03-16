@@ -1,7 +1,4 @@
-import math
 from tkinter import *
-
-from Apps import App
 
 
 class MainWindow:
@@ -13,7 +10,7 @@ class MainWindow:
         self.root = root
         self.root.withdraw()
         self.current_window = Toplevel()
-        self.current_window.title("Main Menu")  # TODO: Think of a creative 'Main Menu' name for this app.
+        self.current_window.title("Apple iPhone 9")
         self.current_window.geometry("414x896")  # dimensions (pixels) of the iphone 11 pro max when divided by 3
 
         '''
@@ -50,7 +47,9 @@ class MainWindow:
         self.current_window.destroy()
 
     def open_snake(self):
-        return
+        from Snake import Snake
+        Snake(self.root)
+        self.current_window.destroy()
 
 
 root = Tk()
