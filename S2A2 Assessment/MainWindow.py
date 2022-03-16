@@ -31,40 +31,26 @@ class MainWindow:
         self.image_background = PhotoImage(file="assets/background.png")
         self.canvas.create_image(0, 0, image=self.image_background, anchor="nw")
 
-        # display the apps using the display_apps() function.
-        # self.applications = App()
-        # self.displayed_apps = []
-        # self.display_apps()
+        self.display_apps()
 
-        self.button_lanuch = Button(self.canvas, text="open tictactoe", command=self.open_tictactoe)
-        self.button_lanuch.place(x=100, y=100)
+    def display_apps(self):
+        self.image_tictactoe = PhotoImage(file="assets/apps/TicTacToe.png")
+        self.canvas.create_image(7, 7, image=self.image_tictactoe, anchor=NW)
+        self.button_tictactoe = Button(self.canvas, text="TicTacToe", command=self.open_tictactoe)
+        self.button_tictactoe.place(x=7, y=105, width=90)
 
-        Snake = {"image": {"filename": "Snake.png", "posx": ""}}
-    #
-    # def display_apps(self):
-    #     # OLDTODO: Documentation.
-    #     self.total_apps_displayed = 0
-    #     while self.total_apps_displayed < self.applications.get_total_apps():
-    #         self.displayed_apps.append(PhotoImage(
-    #             file="assets/apps/" + self.applications.get_filename(self.total_apps_displayed)))
-    #         self.canvas.create_image(self.next_free_position(),  # coords of free pos using its respective function.
-    #                                  image=self.displayed_apps[self.total_apps_displayed],
-    #                                  anchor="nw")
-    #
-    #         # OLDTODO: Place button for every app.
-    #
-    #         self.total_apps_displayed = self.total_apps_displayed + 1
-    #
-    # def next_free_position(self):
-    #     # OLDTODO: Documentation.
-    #     next_x = (self.total_apps_displayed - ((math.ceil(len(self.displayed_apps) / 4) - 1) * 4)) * 98 + 15
-    #     next_y = (math.floor(self.total_apps_displayed / 4) * 122) + 15
-    #     return next_x, next_y
+        self.image_snake = PhotoImage(file="assets/apps/Snake.png")
+        self.canvas.create_image(105, 7, image=self.image_snake, anchor=NW)
+        self.button_snake = Button(self.canvas, text="The Snake", command=self.open_snake)
+        self.button_snake.place(x=105, y=105, width=90)
 
     def open_tictactoe(self):
         from TicTacToe import TicTacToe
         TicTacToe(self.root)
         self.current_window.destroy()
+
+    def open_snake(self):
+        return
 
 
 root = Tk()
