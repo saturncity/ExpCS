@@ -32,9 +32,9 @@ class TicTacToe:
 
     def open_main_window(self):
         """documentation"""
+        self.current_window.destroy()
         from MainWindow import MainWindow
         MainWindow(self.root)
-        self.current_window.destroy()
 
     def start(self):
         """documentation"""
