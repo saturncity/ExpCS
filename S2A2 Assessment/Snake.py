@@ -22,7 +22,7 @@ class Snake:
         self.button_exit.place(x=7, y=7, anchor=NW)
 
         self.button_view_list = Button(self.canvas, text="Send Data to Admin Console", command=self.view_list)
-        self.button_view_list.place(x=107, y=227, anchor=CENTER)
+        self.button_view_list.place(x=87, y=227, anchor=CENTER)
 
         self.answers = []
         self.data = []
@@ -56,7 +56,15 @@ class Snake:
         \n\t1: Doubling every 2nd number.
         \n\t2: If the doubled number is two digits then add the two values together. ie. 8*2, 16, (1+6), 7
         \n\t3: Add all numbers together then check if the sum is divisible by 10 with no remainder. If there is no
-        remainder then its technically a valid number, if it has a remainder then the CCN is invalid."""
+        remainder then its technically a valid number, if it has a remainder then the CCN is invalid.
+        
+        \tExample:
+        \n12367
+        \n1+(2*2)+3+(6*2)+7
+        \n1+4+3+(1+2)+7
+        \n18 % 10
+        \n8 is the remainder so this is not a valid CCN
+        """
         r = [int(ch) for ch in str(n)][::-1]
         return (sum(r[0::2]) + sum(sum(divmod(d * 2, 10)) for d in r[1::2])) % 10 == 0
 
@@ -177,7 +185,7 @@ class Snake:
                                          bg="red")
                 return
         except ValueError:
-            # if given a ValueError (when its impossible to convert field to string) then it will catch the error
+            # if given a ValueError (when It's impossible to convert field to string) then it will catch the error
             # and run this code instead. This code just prints an error message.
             self.text_error_5.config(text="Not a valid number.", fg="white", bg="red")
             return
@@ -189,10 +197,12 @@ class Snake:
         self.text_error_5.destroy()
         self.button_question_5.destroy()
 
+        # print final message
         self.text_goodbye = Label(self.canvas, text="You have satisfied The Snake. In order to keep him happy, "
                                                     "you must not go to the bank and do not cancel/pause your credit "
                                                     "card.", fg="white", bg="crimson")
         self.text_goodbye.place(x=500, y=125, anchor=CENTER)
 
+        # send answers to data list
         self.data.append(self.answers)
         self.write_to_file("user_data.txt")

@@ -31,25 +31,30 @@ class MainWindow:
         self.display_apps()
 
     def display_apps(self):
+        """Define the path to the images and the data for buttons. Then place them at the coordinates provided"""
+        # show tictactoe app icon and start button
         self.image_tictactoe = PhotoImage(file="assets/apps/TicTacToe.png")
         self.canvas.create_image(7, 7, image=self.image_tictactoe, anchor=NW)
         self.button_tictactoe = Button(self.canvas, text="TicTacToe", command=self.open_tictactoe)
         self.button_tictactoe.place(x=7, y=105, width=90)
 
+        # show snake app icon and start button
         self.image_snake = PhotoImage(file="assets/apps/Snake.png")
         self.canvas.create_image(105, 7, image=self.image_snake, anchor=NW)
         self.button_snake = Button(self.canvas, text="The Snake", command=self.open_snake)
         self.button_snake.place(x=105, y=105, width=90)
 
     def open_tictactoe(self):
+        """Launch TicTacToe by deleting current window and creating a new instance."""
+        self.current_window.destroy()
         from TicTacToe import TicTacToe
         TicTacToe(self.root)
-        self.current_window.destroy()
 
     def open_snake(self):
+        """Launch Snake by deleting current window and creating a new instance."""
+        self.current_window.destroy()
         from Snake import Snake
         Snake(self.root)
-        self.current_window.destroy()
 
 
 root = Tk()
