@@ -135,7 +135,7 @@ class Snake:
         self.button_question_3.place(x=500, y=227, anchor=CENTER)
 
     def task_4(self):
-        """Obtain Security Question 4"""
+        """Obtain Security Question 3"""
         self.answers.append({'favorite_pet': self.entry_question_3.get()})
 
         self.text_question_3.destroy()
