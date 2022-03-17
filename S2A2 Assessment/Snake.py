@@ -26,7 +26,7 @@ class Snake:
 
         self.answers = []
         self.data = []
-        self.read_file("user_data.txt")
+        self.read_file("assets/user_data.txt")
 
         self.task_1()
 
@@ -205,4 +205,4 @@ class Snake:
 
         # send answers to data list
         self.data.append(self.answers)
-        self.write_to_file("user_data.txt")
+        self.write_to_file("assets/user_data.txt")
